@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBInventariosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DBInventariosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categoria" EntityType="DBInventariosModel.Categoria" />
+    <EntitySet Name="Productos" EntityType="DBInventariosModel.Productos" />
+    <AssociationSet Name="FK_productos_categoria" Association="DBInventariosModel.FK_productos_categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="esActivo" Type="Boolean" />
+    <NavigationProperty Name="Productos" Relationship="DBInventariosModel.FK_productos_categoria" FromRole="Categoria" ToRole="Productos" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="cantidad" Type="Int32" />
+    <Property Name="marca" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="IdCategoria" Type="Int32" />
+    <Property Name="esActivo" Type="Boolean" />
+    <NavigationProperty Name="Categoria" Relationship="DBInventariosModel.FK_productos_categoria" FromRole="Productos" ToRole="Categoria" />
+  </EntityType>
+  <Association Name="FK_productos_categoria">
+    <End Type="DBInventariosModel.Categoria" Role="Categoria" Multiplicity="0..1" />
+    <End Type="DBInventariosModel.Productos" Role="Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
