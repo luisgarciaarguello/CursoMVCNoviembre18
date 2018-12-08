@@ -66,3 +66,4 @@ C:\Users\Admin\CursoMVCNoviembre18\SlInventario\Inventario\bin\Microsoft.Owin.Se
 C:\Users\Admin\CursoMVCNoviembre18\SlInventario\Inventario\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Admin\CursoMVCNoviembre18\SlInventario\Inventario\obj\Debug\Inventario.dll
 C:\Users\Admin\CursoMVCNoviembre18\SlInventario\Inventario\obj\Debug\Inventario.pdb
+C:\Users\Admin\CursoMVCNoviembre18\SlInventario\Inventario\obj\Debug\Inventario.csprojResolveAssemblyReference.cache
